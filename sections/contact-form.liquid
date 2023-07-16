@@ -208,8 +208,10 @@
 }
 {% endschema %}
 <script>
- $('.g-recaptcha').asyncReCAPTCHA({
-  fixHeight:true,
-  offset: -100
-});
+  $(document).ready(function(){
+     $('.g-recaptcha').asyncReCAPTCHA({
+        fixHeight:true,
+        offset: -100
+    });
+  })
 </script>

@@ -124,7 +124,10 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
-    {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+    <button class="g-recaptcha" 
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}

@@ -124,13 +124,9 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
+    <div class="g-recaptcha" data-sitekey="6LexPCsnAAAAAPVW8HtwOJcnZRQLXevn3GGbWHNB"></div>
       <div class="contact__button">
-        <button
-          type="submit" 
-          data-sitekey="6LexPCsnAAAAAPVW8HtwOJcnZRQLXevn3GGbWHNB" 
-          data-callback='onSubmit' 
-          data-action='submit' 
-          class="button">
+        <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
         </button>
       </div>
@@ -211,8 +207,3 @@
   ]
 }
 {% endschema %}
-<script>
-   function onSubmit(token) {
-     document.getElementById("ContactForm").submit();
-   }
- </script>

@@ -207,3 +207,102 @@
   ]
 }
 {% endschema %}
+<script>
+ $('.g-recaptcha').asyncReCAPTCHA({
+  // determine if container is in viewport
+  // credits @ https://stackoverflow.com/a/33979503/2379196
+  isInViewport: function () {
+
+    // container bounds
+    var containerTop = $(this).offset().top;
+    var containerBottom = containerTop + $(this).outerHeight();
+
+    // viewport bounds
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    // detect if container is in viewport
+    return containerBottom > viewportTop && containerTop + config.offset < viewportBottom;
+  },
+
+  // automatically attach inline min-height to prevent reflow
+  setHeight: function() {
+
+    // only if height should be fixed inline
+    if(config.fixHeight) {
+
+        // iterate over all reCAPTCHA containers
+        $(config.containers).each(function () {
+            
+            // apply default height of 78px
+            $(this).attr('style', 'min-height:78px;');
+        });
+    }
+  },
+
+  // remove a predefined spinner from the container of reCAPTCHA
+  removeSpinner: function() {
+
+    // remove spinner within parent container
+    var hFunc = function() { 
+        $(this).parent().find('.' + config.spinner.spinnerCtnClass).remove();
+    };
+
+    // wait a specific time in milliseconds before removing spinner
+    setTimeout(hFunc.bind(this), config.spinner.delay);
+  },
+
+  // attach a predefined spinner to the container of reCAPTCHA
+  attachSpinner: function() {
+    var spinner = config.spinner;
+    var $spinnerDiv, $spinnerCtn;
+
+    // if spinner should be attached
+    if(spinner.attach) {
+
+        // iterate over all reCAPTCHA containers
+        $(config.containers).each(function () {
+
+            // create bootstrap spinner
+            if(spinner.type == 'bootstrap') {
+
+                // create spinner container
+                $spinnerDiv = $('<div>').addClass(spinner.bsSpinnerClass + ' ' + spinner.spinnerClass).attr('role', 'status');
+                $spinnerDiv.prepend($('<span>').addClass('sr-only').html('Loading...'));
+
+            // create included spinner
+            }else if(spinner.type == 'included') {
+
+                // create spinner container
+                $spinnerDiv = $('<div>').addClass('simple-spinner' + ' ' + spinner.spinnerClass).attr('role', 'status');
+
+            // create custom spinner
+            }else if (spinner.type == 'custom') {
+
+                // create custom spinner element by passed HTML
+                $spinnerDiv = $(spinner.customSpinner).addClass(spinner.spinnerClass);
+            }
+
+            // create spinner container and prepend to parent container
+            $spinnerCtn = $('<div>').addClass(spinner.spinnerCtnClass).prepend($spinnerDiv);
+            $(this).parent().prepend($spinnerCtn);
+        });
+    }
+  },
+
+  // append trigger event
+  triggerAsyncLoad: function () {
+    $(window).on('resize scroll', function() { config.checkAndLoad() });
+  },
+
+  // check and load reCAPTCHA(s)
+  checkAndLoad: function() { checkAndLoadReCAPTCHA() },
+
+  // before load initiated
+  beforeLoad: function() {},
+
+  // after load initiated
+  afterLoad: function() {}
+  
+});
+</script>

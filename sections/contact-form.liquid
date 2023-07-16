@@ -124,7 +124,7 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
-    <div class="g-recaptcha" data-sitekey="6LcIcisnAAAAAFRQM1IgLgLkjYfT1kEhOvW_BHCC"></div>
+    <div class="g-recaptcha" data-sitekey="6LdloSsnAAAAAMVrF8cgYNU3XAt5SOM71eJsJpRJ"></div>
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
@@ -209,6 +209,7 @@
 {% endschema %}
 <script>
  $('.g-recaptcha').asyncReCAPTCHA({
-  fixHeight:true
+  fixHeight:true,
+  offset: -100
 });
 </script>

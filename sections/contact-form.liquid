@@ -209,14 +209,6 @@
 {% endschema %}
 <script>
  $('.g-recaptcha').asyncReCAPTCHA({
-  spinner: {
-    attach: true, 
-    remove: true, 
-    type: 'custom',
-    customSpinner: 'Your Loading Spinner HTML',
-    delay: 5000,
-    spinnerClass: 'async-recaptcha-spinner',
-    spinnerCtnClass: 'async-recaptcha-spinner-ctn',
-  }
+  fixHeight:true
 });
 </script>

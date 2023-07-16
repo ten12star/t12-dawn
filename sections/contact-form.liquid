@@ -124,15 +124,16 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
-    <button class="g-recaptcha" 
-        data-sitekey="6LexPCsnAAAAAPVW8HtwOJcnZRQLXevn3GGbWHNB" 
-        data-callback='onSubmit' 
-        data-action='submit'>Submit</button>
-<!--       <div class="contact__button">
-        <button type="submit" class="button">
+      <div class="contact__button">
+        <button
+          type="submit" 
+          data-sitekey="6LexPCsnAAAAAPVW8HtwOJcnZRQLXevn3GGbWHNB" 
+          data-callback='onSubmit' 
+          data-action='submit' 
+          class="button">
           {{ 'templates.contact.form.send' | t }}
         </button>
-      </div> -->
+      </div>
     {%- endform -%}
   </div>
 </div>

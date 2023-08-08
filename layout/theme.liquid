@@ -35,6 +35,7 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {% render 'boost-sd-fallback' %}
     {{ content_for_header }}
 
     {%- liquid

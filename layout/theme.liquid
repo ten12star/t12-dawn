@@ -331,5 +331,9 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
   {% include 'globo.filter.action' %}
-	</body>
+	
+    <!-- ACCESSIBILITYSPARK START -->
+    {% render 'accessibility-spark-widget' %}
+    <!-- ACCESSIBILITYSPARK END -->
+  </body>
 </html>

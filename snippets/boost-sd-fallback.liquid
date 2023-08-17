@@ -16,7 +16,7 @@
           productPerPage: {{ products_per_page }},
           products: {{ collection.products | json }},
           collection: {
-            title: "{{ collection.title }}"
+            title: {{ collection.title | json}}
           },
           pagination: {{ paginate | json }},
           moneyFormatWithCurrency: {{ shop.money_with_currency_format | replace: "'", '"' | json }},
@@ -38,7 +38,7 @@
           productPerPage: {{ products_per_page }},
           products: searchResult,
           collection: {
-            title: "{{ collection.title }}"
+            title: {{ collection.title | json }}
           },
           pagination: {{ paginate | json }},
           moneyFormatWithCurrency: {{ shop.money_with_currency_format | replace: "'", '"' | json }},

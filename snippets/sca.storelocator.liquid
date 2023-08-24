@@ -1,0 +1,19 @@
+<script>
+    var appEnvironment = 'storelocator-prod';
+    var shopHash = sl_shophash;
+</script>
+{% if template contains 'product' %}
+<script>
+    {% capture product_output %}{
+        id:{{product.id}},
+        handle:'{{product.handle}}',
+        title:{{product.title | json}},
+        variants: {{ product.variants | json }},
+        tags: {{ product.tags | json }},
+        collections: {{ product.collections | json }},
+        vendor: "{{ product.vendor}}",
+    }{% endcapture %}
+    {% assign output_lines = product_output | newline_to_br | split: '<br />' %}
+    SCASLShopifyProduct = {% for line in output_lines %}{{ line | strip }}{% endfor %};
+</script>
+{% endif %}

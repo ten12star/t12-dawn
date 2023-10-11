@@ -109,8 +109,8 @@
               {%- endif -%}
               <div {{ block.shopify_attributes }}>
                 {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                {%- form 'product', product, data-productid: product.id, id: product_form_installment_id, class: 'installment caption-large' -%}
+                  <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
                   {{ form | payment_terms }}
                 {%- endform -%}
               </div>
@@ -499,7 +499,7 @@
       }
 
       if (!isIE()) return;
-      const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+      const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id" data-productid="{{ product.id }}"]');
       const noScriptInputWrapper = document.createElement('div');
       const variantSwitcher =
         document.querySelector('variant-radios[data-section="{{ section.id }}"]') ||

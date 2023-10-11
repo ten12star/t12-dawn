@@ -59,8 +59,8 @@
 
                   <div itemprop="description" class="gfqv-description">{{ product.description }}</div>
 
-                  <form action="{{routes.cart_add_url}}" method="post" enctype="multipart/form-data" class="gfqv-product-form">
-                    <select name="id" id="gfqv-select">
+                  <form action="{{routes.cart_add_url}}" data-productid="{{ product.id }}" method="post" enctype="multipart/form-data" class="gfqv-product-form">
+                    <select name="id" data-productid="{{ product.id }}" id="gfqv-select">
                       {% for variant in product.variants %}
                       <option data-option1="{{variant.option1 | escape}}" data-option2="{{variant.option2 | escape}}" data-option3="{{variant.option3 | escape}}" data-price="{{variant.price}}" data-compare_at_price="{{variant.compare_at_price}}" data-available="{{variant.available}}" data-image-index="{% if variant.image %}{{variant.image.position}}{% endif %}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }}</option>
                       {% endfor %}

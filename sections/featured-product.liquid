@@ -184,8 +184,8 @@
                 {%- endif -%}
                 {%- if product != blank -%}
                   <div {{ block.shopify_attributes }}>
-                    {%- form 'product', product -%}
-                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    {%- form 'product', product, data-productid: product.id -%}
+                      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
                       {{ form | payment_terms }}
                     {%- endform -%}
                   </div>
@@ -522,7 +522,7 @@
     }
 
     if (!isIE()) return;
-    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id" data-productid="{{ product.id }}"]');
     const noScriptInputWrapper = document.createElement('div');
     const variantSwitcher =
       document.querySelector('variant-radios[data-section="{{ section.id }}"]') ||

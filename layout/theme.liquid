@@ -336,6 +336,5 @@
     <!-- ACCESSIBILITYSPARK START -->
     {% render 'accessibility-spark-widget' %}
     <!-- ACCESSIBILITYSPARK END -->
-  {% comment %} Dotdigital CartInsight: Start {% endcomment %}{% if content_for_header contains "https:\/\/r1-t.trackedlink.net\/shopify\/wbt.js" and customer.email %} {% assign track_non_subscribed = false %} {% if customer.accepts_marketing or track_non_subscribed %} <script> window.dmPtId = function() { window.dmPt('identify', '{{ customer.email }}'); } </script> {% endif %} {% endif %}{% comment %} Dotdigital CartInsight: End {% endcomment %}
-</body>
+  </body>
 </html>
